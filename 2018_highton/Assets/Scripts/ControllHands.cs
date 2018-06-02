@@ -4,25 +4,41 @@ using UnityEngine;
 
 public class ControllHands : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
 	// Update is called once per frame
 	void Update () {
-        Vector3 mPos = Input.mousePosition;
-        Vector3 oPos = transform.position;
+        if(Input.GetKey(KeyCode.UpArrow))
+        {
+            this.transform.Translate(Vector3.forward * 1.0f * Time.deltaTime);
+        }
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            this.transform.Translate(Vector3.back * 1.0f * Time.deltaTime);
+        }
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            this.transform.Translate(Vector3.left * 1.0f * Time.deltaTime);
+        }
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            this.transform.Translate(Vector3.right * 1.0f * Time.deltaTime);
+        }
 
-        mPos.z = oPos.z - Camera.main.transform.position.z;
+        if(Input.GetKey(KeyCode.W))
+        {
+            this.transform.Rotate(new Vector3(50.0f, 0.0f, 0.0f) * Time.deltaTime);
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            this.transform.Rotate(new Vector3(-50.0f, 0.0f, 0.0f) * Time.deltaTime);
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            this.transform.Rotate(new Vector3(0.0f, 0.0f, 50.0f) * Time.deltaTime);
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            this.transform.Rotate(new Vector3(0.0f, 0.0f, -50.0f) * Time.deltaTime);
+        }
 
-        Vector3 target = Camera.main.ScreenToWorldPoint(mPos);
-
-        float dy = target.y - oPos.y;
-        float dx = target.x - oPos.x;
-
-        float rotateDegree = Mathf.Atan2(dy, dx) * Mathf.Rad2Deg;
-
-        transform.rotation = Quaternion.Euler(0f, 0f, rotateDegree);
-	}
+    }
 }
