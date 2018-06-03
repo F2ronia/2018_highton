@@ -23,7 +23,10 @@ public class ControllHands : MonoBehaviour {
     //
     public Text hitScore;
     //
-
+    private Touch tempTouchs;
+    //
+    private Vector3 touchedPos;
+    //
     private void Update()
     {
         if (Input.GetMouseButton(0))
@@ -44,30 +47,31 @@ public class ControllHands : MonoBehaviour {
             }
         }
         CheckCanShoot();
+
     }
 
     private void Fire()
     {
-        if (canShoot)
-        {
+        //if (canShoot)
+        //{
             Instantiate(bullet, firePos.position, firePos.rotation);
             SoundManager.instance.PlayFireSound();
             shotCnt++;
-        }
-        else
-            return;
+        //}
+        //else
+        //    return;
 
     }
     private void CheckCanShoot()
     {
-        if (shotCnt > 5)
-        {
-            canShoot = false;
-            score.transform.gameObject.SetActive(true);
-            hitScore.text = BulletManager.instance.hitCnt.ToString();
-        }
-        else
-            return;
+        //if (shotCnt > 5)
+        //{
+          //  canShoot = false;
+          //  score.transform.gameObject.SetActive(true);
+         //   hitScore.text = BulletManager.instance.hitCnt.ToString();
+       // }
+        //else
+         //   return;
     }
 
     [System.Serializable]
